@@ -3,9 +3,8 @@ import { getProducts, updateProductAvailability } from "../services/ProductServi
 import ProductDetails from "../components/ProductDetails";
 import { Product } from "../types";
 
-export async function loader() {
-  const products = await getProducts();
-  return products;
+export async function loader(): Promise<Product[]> {
+  return (await getProducts()) ?? [];
 }
 
 export async function action({ request }: ActionFunctionArgs) {
